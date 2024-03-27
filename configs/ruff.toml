@@ -1,0 +1,28 @@
+extend-exclude = [
+  "env/",
+]
+
+# Same as Black.
+line-length = 120
+target-version = "py311"
+
+src = []
+
+[lint]
+select = ["E", "F", "B", "W"]
+ignore = [
+  "E501",
+  "E741",
+  "F405",
+  # --- New with ruff
+  "B008",
+  "B009",
+  "B010",
+  "B026", 
+  "B904",
+]
+
+extend-select = ["I"]
+[lint.isort]
+known-third-party = ["django", "fastapi"]
+section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]
