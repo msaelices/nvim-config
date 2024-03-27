@@ -8,13 +8,15 @@ target-version = "py311"
 
 src = []
 
+[format]
+quote-style = "single"
+
 [lint]
 select = ["E", "F", "B", "W"]
 ignore = [
   "E501",
   "E741",
   "F405",
-  # --- New with ruff
   "B008",
   "B009",
   "B010",

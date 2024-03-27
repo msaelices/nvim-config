@@ -15,11 +15,12 @@ lspconfig.ruff_lsp.setup({
       -- https://github.com/astral-sh/ruff-lsp/blob/main/ruff_lsp/server.py
       settings = {
         fixAll = true,
-        organizeImports = false,  -- let isort take care of organizeImports
+        organizeImports = true,
         -- extra CLI arguments
         -- https://beta.ruff.rs/docs/configuration/#command-line-interface
         -- https://beta.ruff.rs/docs/rules/
         args = {
+          "format",
           "--config", "~/.config/nvim/lua/custom/configs/ruff.toml",
           "--ignore", table.concat({
           "E111", -- indentation-with-invalid-multiple
