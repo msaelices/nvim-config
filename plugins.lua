@@ -62,5 +62,6 @@ local plugins = {
       require "custom.configs.lspconfig"
     end,
   },
+  { "nvim-neotest/nvim-nio" },
 }
 return plugins
