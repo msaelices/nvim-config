@@ -36,13 +36,13 @@ local plugins = {
       require("core.utils").load_mappings("dap_python")
     end,
   },
-  {
-    "nvimtools/none-ls.nvim",
-    ft = {"python"},
-    opts = function()
-      return require "custom.configs.null-ls"
-    end,
-  },
+  -- {
+  --   "nvimtools/none-ls.nvim",
+  --   ft = {"python"},
+  --   opts = function()
+  --     return require "custom.configs.null-ls"
+  --   end,
+  -- },
   {
     "williamboman/mason.nvim",
     opts = {
