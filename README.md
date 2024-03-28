@@ -45,3 +45,46 @@ git clone git@github.com:msaelices/neovim-python.git ~/.config/nvim/lua/custom
 
 7. Press `Space + t + h` and install the theme of your preference.
 
+
+## Plugin lists
+
+### From NvChad
+
+- Many beautiful themes, theme toggler by our [base46 plugin](https://github.com/NvChad/base46)
+- Inbuilt terminal toggling & management with [Nvterm](https://github.com/NvChad/nvterm)
+- Lightweight & performant ui plugin with [NvChad UI](https://github.com/NvChad/ui) It provides statusline modules, tabufline ( tabs + buffer manager) , beautiful cheatsheets, NvChad updater, hide & unhide terminal buffers, theme switcher and much more!
+- File navigation with [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
+- Git diffs and more with [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+- NeoVim LSP configuration with [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) and [mason.nvim](https://github.com/williamboman/mason.nvim)
+- Autocompletion with [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+- File searching, previewing image and text files and more with [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim).
+- Syntax highlighting with [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- Autoclosing braces and html tags with [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
+- Indentlines with [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
+- Useful snippets with [friendly snippets](https://github.com/rafamadriz/friendly-snippets) + [LuaSnip](https://github.com/L3MON4D3/LuaSnip).
+- Popup mappings keysheet [whichkey.nvim](https://github.com/folke/which-key.nvim)
+
+### Extra
+- Debugging Python scripts with [nvim-dap-python](https://github.com/mfussenegger/nvim-dap-python)
+- Linting and formatting with [Ruff](https://github.com/astral-sh/ruff) and [Pyright](https://github.com/microsoft/pyright)
+
+## Tips and tricks
+
+This is a brain dump of the thinks I am learning while trying to master NeoVim and their plugins.
+
+### Finding and searching in your repo
+
+`<Space> ff`: Find/open files based on its path
+`<Space> fw`: Find/open files based on its content (grep)
+
+### Windows
+
+`CTRL-W s`: Split the window in two
+`CTRL-W v`: Split the window vertically
+`CTRL-W q`: Quit the current window
+`CTRL-W h`: Move cursor to next window left to the current one
+`CTRL-W l`: Move cursor to next window right the current one
+`CTRL-W j`: Move cursor to next window below the current one
+`CTRL-W k`: Move cursor to next window above the current one
+
+See https://neovim.io/doc/user/windows.html
