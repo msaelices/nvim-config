@@ -41,3 +41,12 @@ vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+-- Insert python breakpoint()
+vim.keymap.set("n", "<leader>d", "obreakpoint()<esc>")
+
+-- Navigate up, down, left, and right between splits.
+vim.keymap.set("n", "<leader>h", "<c-w>h")
+vim.keymap.set("n", "<leader>j", "<c-w>j")
+vim.keymap.set("n", "<leader>k", "<c-w>k")
+vim.keymap.set("n", "<leader>l", "<c-w>l")
