@@ -65,7 +65,7 @@ git clone git@github.com:msaelices/neovim-python.git ~/.config/nvim/lua/custom
 - Popup mappings keysheet [whichkey.nvim](https://github.com/folke/which-key.nvim)
 
 ### Extra
-- Debugging Python scripts with [nvim-dap-python](https://github.com/mfussenegger/nvim-dap-python)
+- [REMOVED] Debugging Python scripts with [nvim-dap-python](https://github.com/mfussenegger/nvim-dap-python)
 - Linting and formatting with [Ruff](https://github.com/astral-sh/ruff) and [Pyright](https://github.com/microsoft/pyright)
 
 ## Tips and tricks
@@ -79,12 +79,13 @@ This is a brain dump of the thinks I am learning while trying to master NeoVim a
 
 ### Windows
 
-`CTRL-W s`: Split the window in two
-`CTRL-W v`: Split the window vertically
-`CTRL-W q`: Quit the current window
-`CTRL-W h`: Move cursor to next window left to the current one
-`CTRL-W l`: Move cursor to next window right the current one
-`CTRL-W j`: Move cursor to next window below the current one
-`CTRL-W k`: Move cursor to next window above the current one
+`CTRL-w s`: Split the window in two
+`CTRL-w v`: Split the window vertically
+`CTRL-w q`: Quit the current window
+`CTRL-w o`: Quit others windows
+`CTRL-w h`: Move cursor to next window left to the current one
+`CTRL-w l`: Move cursor to next window right the current one
+`CTRL-w j`: Move cursor to next window below the current one
+`CTRL-w k`: Move cursor to next window above the current one
 
 See https://neovim.io/doc/user/windows.html
