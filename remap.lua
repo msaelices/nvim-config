@@ -4,13 +4,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("n", "<leader>vwm", function()
-    require("vim-with-me").StartVimWithMe()
-end)
-vim.keymap.set("n", "<leader>svwm", function()
-    require("vim-with-me").StopVimWithMe()
-end)
-
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
@@ -25,8 +18,11 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
 
+-- Move to the above and below errors detected by LSP
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+
+-- Move to the above and below windows
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
@@ -46,3 +42,9 @@ vim.keymap.set("n", "<leader>l", "<c-w>l")
 
 vim.keymap.set("n", "<leader><Left>", "<cmd>bp<CR>")
 vim.keymap.set("n", "<leader><Right>", "<cmd>bn<CR>")
+
+
+-- Navigate between LSP diagnosis issues
+
+vim.keymap.set("n", "<leader>ln", vim.diagnostic.goto_next)
+vim.keymap.set("n", "<leader>lp", vim.diagnostic.goto_prev)

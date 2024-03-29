@@ -90,7 +90,18 @@ This is a brain dump of the thinks I am learning while trying to master NeoVim a
 
 See https://neovim.io/doc/user/windows.html
 
-## Quick navigation between buffers (tabs)
+### Quick navigation
 
-`<Space><Left>`: Go to the previous buffer
-`<Space><Right>`: Go to the next buffer
+`<Space> <Left>`: Go to the previous buffer (tab)
+`<Space> <Right>`: Go to the next buffer (tab)
+`Ctrl+o`: Go to the previous location. If used in insert mode, it move to normal mode just for one command and return back to insert.
+
+### LSP
+
+`<Space> lf`: Display the diagnostic float window if the cursor is over one issue
+`<Space> ln`: Go to the next diagnostic issue
+`<Space> lp`: Go to the previous diagnostic issue
+`<Space> ca`: Run code actions
+`<Space> ra`: Rename the name over the cursor
+`<Space> gd`: Go to definition
+`<Space> q`: Diagnostic listing
