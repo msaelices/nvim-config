@@ -43,7 +43,7 @@ git clone git@github.com:msaelices/neovim-python.git ~/.config/nvim/lua/custom
 
 6. Execute `nvim` and let [Lazy.vim](https://www.lazyvim.org/) and [Masoni.vim](https://github.com/williamboman/mason.nvim) to install all the plugins.
 
-7. Press `Space + t + h` and install the theme of your preference.
+7. Press `Space t h` and install the theme of your preference.
 
 
 ## Plugin lists
@@ -71,6 +71,14 @@ git clone git@github.com:msaelices/neovim-python.git ~/.config/nvim/lua/custom
 ## Tips and tricks
 
 This is a brain dump of the thinks I am learning while trying to master NeoVim and their plugins.
+
+### Copy-paste Tips
+
+`<Space> p`: Paste without loosing the clipboard you yanked
+
+### Edit
+
+`={motion}`: Indent the text specified by motion. For example, `=p` will indent the whole paragraph
 
 ### Finding and searching in your repo
 
