@@ -89,3 +89,8 @@ This is a brain dump of the thinks I am learning while trying to master NeoVim a
 `CTRL-w k`: Move cursor to next window above the current one
 
 See https://neovim.io/doc/user/windows.html
+
+## Quick navigation between buffers (tabs)
+
+`<Space><Left>`: Go to the previous buffer
+`<Space><Right>`: Go to the next buffer
