@@ -62,7 +62,7 @@ local plugins = {
     end,
   },
   { "nvim-neotest/nvim-nio" },
-  { "github/copilot.vim" },
+  { "github/copilot.vim", lazy = false },
   {
     'stevearc/conform.nvim',
     opts = {
