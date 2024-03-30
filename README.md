@@ -9,6 +9,16 @@ rm -rf ~/.local/share/nvim
 
 2. Install the pre-dependencies, like LSPs and node.js:
 
+- [universal-ctags](https://github.com/universal-ctags/ctags):
+
+```bash
+sudo apt-get install universal-ctags
+```
+or:
+```bash
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+```
+
 - [nodejs](https://nodejs.org/en/download/):
 
 ```bash
@@ -113,3 +123,10 @@ See https://neovim.io/doc/user/windows.html
 `<Space> ra`: Rename the name over the cursor
 `<Space> gd`: Go to definition
 `<Space> q`: Diagnostic listing
+
+### Code outline navigation
+
+`<Space> a`: Open the aereal code outline window
+`{`: Navigate to the previous symbol in the code outline
+`}`: Navigate to the next symbol in the code outline
+

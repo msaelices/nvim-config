@@ -48,3 +48,6 @@ vim.keymap.set("n", "<leader><Right>", "<cmd>bn<CR>")
 
 vim.keymap.set("n", "<leader>ln", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>lp", vim.diagnostic.goto_prev)
+
+-- Open the aereal code outline window
+vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")

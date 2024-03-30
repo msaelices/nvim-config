@@ -64,7 +64,17 @@ local plugins = {
   { "nvim-neotest/nvim-nio" },
   { "github/copilot.vim", lazy = false },
   {
-    'stevearc/conform.nvim',
+    "stevearc/aerial.nvim",
+    lazy = false,
+    opts = {},
+    -- Optional dependencies
+    dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-tree/nvim-web-devicons"
+    },
+  },
+  {
+    "stevearc/conform.nvim",
     opts = {
       notify_on_error = true,
       format_on_save = function(bufnr)
