@@ -102,6 +102,14 @@ local plugins = {
         python = { "ruff_fix", "ruff_format" },
       },
     },
-  }
+  },
+  {
+   "sotte/presenting.nvim",
+   opts = {
+     -- fill in your options here
+     -- see :help Presenting.config
+   },
+   cmd = { "Presenting" },
+  },
 }
 return plugins
