@@ -73,6 +73,7 @@ git clone git@github.com:msaelices/neovim-python.git ~/.config/nvim/lua/custom
 - Indentlines with [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
 - Useful snippets with [friendly snippets](https://github.com/rafamadriz/friendly-snippets) + [LuaSnip](https://github.com/L3MON4D3/LuaSnip).
 - Popup mappings keysheet [whichkey.nvim](https://github.com/folke/which-key.nvim)
+- Multi cursors with [vim-visual-multi](https://github.com/mg979/vim-visual-multi)
 
 ### Extra
 - [REMOVED] Debugging Python scripts with [nvim-dap-python](https://github.com/mfussenegger/nvim-dap-python)
@@ -130,3 +131,25 @@ See https://neovim.io/doc/user/windows.html
 `{`: Navigate to the previous symbol in the code outline
 `}`: Navigate to the next symbol in the code outline
 
+### Multi cursors
+
+Basic usage:
+
+- select words with `Ctrl-N` (like `Ctrl-d` in Sublime Text/VS Code)
+- create cursors vertically with `Ctrl-Down` `Ctrl-Up`
+- select one character at a time with `Shift-Arrows`
+- press `n` `N` to get next/previous occurrence
+- press `[` `]` to select next/previous cursor
+- press `q` to skip current and get next occurrence
+- press `Q` to remove current cursor/selection
+- start insert mode with `i`,`a`,`I`,`A`
+
+Two main modes:
+
+- in _cursor mode_ commands work as they would in normal mode
+- in _extend mode_ commands work as they would in visual mode
+- press `Tab` to switch between «cursor» and «extend» mode
+
+Most vim commands work as expected (motions, `r` to replace characters, `~` to change case, etc).
+
+See https://github.com/mg979/vim-visual-multi
