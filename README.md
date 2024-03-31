@@ -37,6 +37,8 @@ pip install pyright
 pip install ruff
 ```
 
+- [LazyGit](https://github.com/jesseduffield/lazygit?#installation)
+
 3. Install [NvChad](https://nvchad.com/docs/quickstart/install) dependencies, including the [Nerd fonts](https://www.nerdfonts.com/) to have all the unicode icons available.
 
 4. Install the NvChad repo, into the `~/.config/nvim` directory:

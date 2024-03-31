@@ -93,7 +93,6 @@ local default_plugins = {
       require("gitsigns").setup(opts)
     end,
   },
-
   -- lsp stuff
   {
     "williamboman/mason.nvim",
