@@ -104,12 +104,23 @@ local plugins = {
     },
   },
   {
-   "sotte/presenting.nvim",
-   opts = {
-     -- fill in your options here
-     -- see :help Presenting.config
-   },
-   cmd = { "Presenting" },
+   'waylonwalker/Telegraph.nvim',
+    config = function()
+        function open_lookatme ()
+            require 'telegraph'.telegraph({
+                cmd='lookatme {filepath} --live-reload --style gruvbox-dark',
+                -- how='tmux_popup',
+            })
+        end
+        -- This is not working, I will need to investigate
+        -- require('telegraph').setup({
+        --     on_attach = function(bufnr)
+        --         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader><leader>s', open_lookatme, { noremap = true })
+        --     end
+        -- })
+        vim.keymap.set("n", "<leader><leader>s", open_lookatme)
+    end,
+    lazy = false,
   },
 }
 return plugins
