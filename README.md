@@ -39,6 +39,12 @@ pip install ruff
 
 - [LazyGit](https://github.com/jesseduffield/lazygit?#installation)
 
+- [xclip](https://manpages.ubuntu.com/manpages/xenial/man1/xclip.1.html) for allowing to copy-paste from the system clipboard
+
+```bash
+sudo apt-get install xclip
+```
+
 3. Install [NvChad](https://nvchad.com/docs/quickstart/install) dependencies, including the [Nerd fonts](https://www.nerdfonts.com/) to have all the unicode icons available.
 
 4. Install the NvChad repo, into the `~/.config/nvim` directory:
