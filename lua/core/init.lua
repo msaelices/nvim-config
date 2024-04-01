@@ -71,6 +71,19 @@ autocmd("FileType", {
   end,
 })
 
+-- set folding for python
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "python",
+  callback = function()
+    -- set foldmethod=expr
+    vim.opt_local.foldmethod = "expr"
+    -- set foldexpr=nvim_treesitter#foldexpr()
+    vim.opt_local.foldexpr = "nvim_treesitter#foldexpr()"
+    -- set nofoldenable
+    vim.opt_local.foldenable = false
+  end,
+})
+
 -- reload some chadrc options on-save
 autocmd("BufWritePost", {
   pattern = vim.tbl_map(function(path)
