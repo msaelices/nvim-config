@@ -98,6 +98,16 @@ This is a brain dump of the thinks I am learning while trying to master NeoVim a
 `<Space> ff`: Find/open files based on its path
 `<Space> fw`: Find/open files based on its content (grep)
 
+### Find and replace with regex
+
+`:%s/old/new/gc`: Replace all ocurrences of `old` with `new` in the whole file, asking for confirmation
+
+We can use `\1`, `\2`, etc. to refer to the matched groups, so between `\(` and `\)`, in the `old` part of the command.
+
+For example, if we have the following line:
+
+`:%s/update_fields=\[\(.*\)]/update_fields=(\1,)`: Replace `update_fields=[...]` with `update_fields=(...,)` in the whole file
+
 ### Windows
 
 `CTRL-w s`: Split the window in two
