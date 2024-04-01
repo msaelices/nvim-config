@@ -87,20 +87,20 @@ This is a brain dump of the thinks I am learning while trying to master NeoVim a
 
 ### Copy-paste Tips
 
-`<Space> p`: Paste without loosing the clipboard you yanked
+- `<Space> p`: Paste without loosing the clipboard you yanked
 
 ### Edit
 
-`={motion}`: Indent the text specified by motion. For example, `=p` will indent the whole paragraph
+- `={motion}`: Indent the text specified by motion. For example, `=p` will indent the whole paragraph
 
 ### Finding and searching in your repo
 
-`<Space> ff`: Find/open files based on its path
-`<Space> fw`: Find/open files based on its content (grep)
+- `<Space> ff`: Find/open files based on its path
+- `<Space> fw`: Find/open files based on its content (grep)
 
 ### Find and replace with regex
 
-`:%s/old/new/gc`: Replace all ocurrences of `old` with `new` in the whole file, asking for confirmation
+- `:%s/old/new/gc`: Replace all ocurrences of `old` with `new` in the whole file, asking for confirmation
 
 We can use `\1`, `\2`, etc. to refer to the matched groups, so between `\(` and `\)`, in the `old` part of the command.
 
@@ -110,38 +110,48 @@ For example, if we have the following line:
 
 ### Windows
 
-`CTRL-w s`: Split the window in two
-`CTRL-w v`: Split the window vertically
-`CTRL-w q`: Quit the current window
-`CTRL-w o`: Quit others windows
-`CTRL-w h`: Move cursor to next window left to the current one
-`CTRL-w l`: Move cursor to next window right the current one
-`CTRL-w j`: Move cursor to next window below the current one
-`CTRL-w k`: Move cursor to next window above the current one
+- `CTRL-w s`: Split the window in two
+- `CTRL-w v`: Split the window vertically
+- `CTRL-w q`: Quit the current window
+- `CTRL-w o`: Quit others windows
+- `CTRL-w h`: Move cursor to next window left to the current one
+- `CTRL-w l`: Move cursor to next window right the current one
+- `CTRL-w j`: Move cursor to next window below the current one
+- `CTRL-w k`: Move cursor to next window above the current one
 
 See https://neovim.io/doc/user/windows.html
 
 ### Quick navigation
 
-`<Space> <Left>`: Go to the previous buffer (tab)
-`<Space> <Right>`: Go to the next buffer (tab)
-`Ctrl+o`: Go to the previous location. If used in insert mode, it move to normal mode just for one command and return back to insert.
+- `<Space> <Left>`: Go to the previous buffer (tab)
+- `<Space> <Right>`: Go to the next buffer (tab)
+- `Ctrl+o`: Go to the previous location. If used in insert mode, it move to normal mode just for one command and return back to insert.
 
 ### LSP
 
-`<Space> lf`: Display the diagnostic float window if the cursor is over one issue
-`<Space> ln`: Go to the next diagnostic issue
-`<Space> lp`: Go to the previous diagnostic issue
-`<Space> ca`: Run code actions
-`<Space> ra`: Rename the name over the cursor
-`<Space> gd`: Go to definition
-`<Space> q`: Diagnostic listing
+- `<Space> lf`: Display the diagnostic float window if the cursor is over one issue
+- `<Space> ln`: Go to the next diagnostic issue
+- `<Space> lp`: Go to the previous diagnostic issue
+- `<Space> ca`: Run code actions
+- `<Space> ra`: Rename the name over the cursor
+- `<Space> gd`: Go to definition
+- `<Space> q`: Diagnostic listing
 
 ### Code outline navigation
 
-`<Space> a`: Open the aereal code outline window
-`{`: Navigate to the previous symbol in the code outline
-`}`: Navigate to the next symbol in the code outline
+- `<Space> a`: Open the aereal code outline window
+- `{`: Navigate to the previous symbol in the code outline
+- `}`: Navigate to the next symbol in the code outline
+
+### Increment or decrement numbers
+
+- `Ctrl-a`: Increment the number under the cursor
+- `Ctrl-x`: Decrement the number under the cursor
+- `V` + `Ctrl-a`: Increment all the numbers in the selection
+- `V` + `Ctrl-x`: Decrement all the numbers in the selection
+- `V` + `g` + `Ctrl-a`: Increment all the numbers in the selection, keeping the column alignment
+- `V` + `g` + `Ctrl-x`: Decrement all the numbers in the selection, keeping the column alignment
+- Also works with `Ctrl+V` to select a column
 
 ### Multi cursors
 
