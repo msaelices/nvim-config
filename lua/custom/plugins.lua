@@ -156,5 +156,17 @@ local plugins = {
       { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
   },
+  { 
+    "andymass/vim-matchup",
+    config = function()
+        require("nvim-treesitter.configs").setup({
+           matchup = {
+               enable = true, -- mandatory, false will disable the whole extension
+               disable = {},  -- optional, list of language that will be disabled
+           },
+        })
+    end,
+    lazy = false,
+ },
 }
 return plugins
