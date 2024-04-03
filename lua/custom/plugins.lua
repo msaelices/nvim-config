@@ -168,5 +168,18 @@ local plugins = {
     end,
     lazy = false,
  },
+ {
+     "nvim-lua/plenary.nvim",
+ },
+ {
+     "ThePrimeagen/harpoon",
+    lazy = false,
+    keys = {
+      { "<leader>9", mode = { "n"}, function() require("harpoon.ui").toggle_quick_menu() end },
+      { "<leader>0", mode = { "n"}, function() require("harpoon.mark").add_file() end },
+      { "<leader>1", mode = { "n"}, function() require("harpoon.ui").nav_prev() end },
+      { "<leader>2", mode = { "n"}, function() require("harpoon.ui").nav_next() end },
+    }, 
+ },
 }
 return plugins
