@@ -181,5 +181,16 @@ local plugins = {
       { "<leader>2", mode = { "n"}, function() require("harpoon.ui").nav_next() end },
     }, 
  },
+ {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+    keys = {
+      { "<leader>pm", mode = { "n"}, "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown Preview Toggle" },
+    }
+ },
 }
 return plugins
