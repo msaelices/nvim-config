@@ -45,6 +45,18 @@ pip install ruff
 sudo apt-get install xclip
 ```
 
+- [lookatme]() for markdown preview as slides
+
+```bash
+pip install lookatme
+```
+or:
+```bash
+sudo apt-get install lookatme
+```
+
+```bash
+
 3. Install [NvChad](https://nvchad.com/docs/quickstart/install) dependencies, including the [Nerd fonts](https://www.nerdfonts.com/) to have all the unicode icons available.
 
 4. Install the NvChad repo, into the `~/.config/nvim` directory:
