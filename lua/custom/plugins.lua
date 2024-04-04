@@ -62,7 +62,19 @@ local plugins = {
     end,
   },
   { "nvim-neotest/nvim-nio" },
-  { "github/copilot.vim", lazy = false },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+        },
+      })
+    end,
+  },
   {
     "stevearc/aerial.nvim",
     lazy = false,
