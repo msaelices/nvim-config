@@ -113,8 +113,8 @@ This is a brain dump of the thinks I am learning while trying to master NeoVim a
 
 ### Finding and searching in your repo
 
-- `<Space> ff`: Find/open files based on its path
 - `<Space> fw`: Find/open files based on its content (grep)
+- `:vimgrep {pattern} {files}` - Search for a pattern in multiple files and populate the quick fix list. (`:help :vimgrep`)
 
 ### Find and replace with regex
 
@@ -141,10 +141,32 @@ See https://neovim.io/doc/user/windows.html
 
 ### Quick navigation
 
+- `CTRL-p`: Open the Telescope file finder
 - `<Space> <Left>`: Go to the previous buffer (tab)
 - `<Space> <Right>`: Go to the next buffer (tab)
 - `Ctrl+o`: Go to the previous location. If used in insert mode, it move to normal mode just for one command and return back to insert.
 
+### Motions in the code text objects
+
+Thanks to the `nvim-treesitter/nvim-treesitter-textobjects` plugin, we can empower the motions as nvim is able to understand the code.
+
+- `va=`: Select outer part of an assignment
+- `vi=`: Select inner part of an assignment
+- `vil`: Select inner part of a loop
+- `vaf`: Select outer part of a method/function definition
+- `vif`: Select inner part of a method/function definition
+- `vac`: Select outer part of a class
+- `vic`: Select inner part of a class
+
+Note: change the `v` command with `d`, `c` or `y` to delete, change or yank the text selected by the motion.
+
+- `<leader>na`: swap parameters/argument with next
+- `<leader>n:`: swap object property with next
+- `<leader>nm`: swap function with next
+- `<leader>pa`: swap parameters/argument with prev
+- `<leader>p:`: swap object property with prev
+- `<leader>pm`: swap function with previous
+ 
 ### LSP
 
 - `<Space> lf`: Display the diagnostic float window if the cursor is over one issue
@@ -193,3 +215,9 @@ Two main modes:
 Most vim commands work as expected (motions, `r` to replace characters, `~` to change case, etc).
 
 See https://github.com/mg979/vim-visual-multi
+
+## Copilot
+
+- `Alt+l`: Accept the suggestion
+- `Alt+]`: Next suggestion
+- `Alt+[`: Previous suggestion
