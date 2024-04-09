@@ -90,6 +90,7 @@ git clone git@github.com:msaelices/nvim-python.git ~/.config/nvim
 ### Extra
 - [REMOVED] Debugging Python scripts with [nvim-dap-python](https://github.com/mfussenegger/nvim-dap-python)
 - Linting and formatting with [Ruff](https://github.com/astral-sh/ruff) and [Pyright](https://github.com/microsoft/pyright)
+- Quick navigation between starred files with [Harpoon](https://github.com/ThePrimeagen/harpoon)
 
 ## Tips and tricks
 
@@ -99,7 +100,7 @@ This is a brain dump of the thinks I am learning while trying to master NeoVim a
 
 - `<Space> p`: Paste without loosing the clipboard you yanked
 
-### Edit
+### Indentation
 
 - `={motion}`: Indent the text specified by motion. For example, `=p` will indent the whole paragraph
 
@@ -138,6 +139,24 @@ See https://neovim.io/doc/user/windows.html
 - `<Space> <Right>`: Go to the next buffer (tab)
 - `Ctrl+o`: Go to the previous location. If used in insert mode, it move to normal mode just for one command and return back to insert.
 
+Harpoon:
+
+- `<Space> 9`: Show the Harpoon panel
+- `<Space> 0`: Add the current file to the Harpoon panel
+- `<Space> 1`: Move to the previous file in Harpoon
+- `<Space> 2`: Move to the next file in Harpoon
+
+### LSP
+
+- `<Space> lf`: Display the diagnostic float window if the cursor is over one issue
+- `<Space> ln`: Go to the next diagnostic issue
+- `<Space> lp`: Go to the previous diagnostic issue
+- `<Space> ca`: Run code actions
+- `<Space> ra`: Rename the name over the cursor
+- `<Space> gd`: Go to definition
+- `<Space> q`: Diagnostic listing
+
+
 ### Motions in the code text objects
 
 Thanks to the `nvim-treesitter/nvim-treesitter-textobjects` plugin, we can empower the motions as nvim is able to understand the code.
@@ -159,16 +178,6 @@ Note: change the `v` command with `d`, `c` or `y` to delete, change or yank the 
 - `<leader>p:`: swap object property with prev
 - `<leader>pm`: swap function with previous
  
-### LSP
-
-- `<Space> lf`: Display the diagnostic float window if the cursor is over one issue
-- `<Space> ln`: Go to the next diagnostic issue
-- `<Space> lp`: Go to the previous diagnostic issue
-- `<Space> ca`: Run code actions
-- `<Space> ra`: Rename the name over the cursor
-- `<Space> gd`: Go to definition
-- `<Space> q`: Diagnostic listing
-
 ### Code outline navigation
 
 - `<Space> a`: Open the aereal code outline window
