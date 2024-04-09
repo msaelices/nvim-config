@@ -1,48 +1,4 @@
 local plugins = {
-  -- {
-  --   "rcarriga/nvim-dap-ui",
-  --   dependencies = "mfussenegger/nvim-dap",
-  --   config = function()
-  --     local dap = require("dap")
-  --     local dapui = require("dapui")
-  --     dapui.setup()
-  --     dap.listeners.after.event_initialized["dapui_config"] = function()
-  --       dapui.open()
-  --     end
-  --     dap.listeners.before.event_terminated["dapui_config"] = function()
-  --       dapui.close()
-  --     end
-  --     dap.listeners.before.event_exited["dapui_config"] = function()
-  --       dapui.close()
-  --     end
-  --   end
-  -- },
-  -- {
-  --   "mfussenegger/nvim-dap",
-  --   config = function(_, opts)
-  --     require("core.utils").load_mappings("dap")
-  --   end
-  -- },
-  -- {
-  --   "mfussenegger/nvim-dap-python",
-  --   ft = "python",
-  --   dependencies = {
-  --     "mfussenegger/nvim-dap",
-  --     "rcarriga/nvim-dap-ui",
-  --   },
-  --   config = function(_, opts)
-  --     local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
-  --     require("dap-python").setup(path)
-  --     require("core.utils").load_mappings("dap_python")
-  --   end,
-  -- },
-  -- {
-  --   "nvimtools/none-ls.nvim",
-  --   ft = {"python"},
-  --   opts = function()
-  --     return require "custom.configs.null-ls"
-  --   end,
-  -- },
   {
     "williamboman/mason.nvim",
     opts = {
@@ -157,7 +113,6 @@ local plugins = {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    ---@type Flash.Config
     opts = {},
     -- stylua: ignore
     keys = {
@@ -171,124 +126,138 @@ local plugins = {
   { 
     "andymass/vim-matchup",
     config = function()
-        require("nvim-treesitter.configs").setup({
-           matchup = {
-               enable = true, -- mandatory, false will disable the whole extension
-               disable = {},  -- optional, list of language that will be disabled
-           },
-        })
+      require("nvim-treesitter.configs").setup({
+        matchup = {
+          enable = true, -- mandatory, false will disable the whole extension
+          disable = {
+            "vue"
+          },  -- optional, list of language that will be disabled
+        },
+      })
     end,
     lazy = false,
- },
- {
+  },
+  {
      "nvim-lua/plenary.nvim",
- },
- {
-     "ThePrimeagen/harpoon",
-    lazy = false,
-    keys = {
-      { "<leader>9", mode = { "n"}, function() require("harpoon.ui").toggle_quick_menu() end },
-      { "<leader>0", mode = { "n"}, function() require("harpoon.mark").add_file() end },
-      { "<leader>1", mode = { "n"}, function() require("harpoon.ui").nav_prev() end },
-      { "<leader>2", mode = { "n"}, function() require("harpoon.ui").nav_next() end },
-    }, 
- },
- {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
-    keys = {
-      { "<leader>pm", mode = { "n"}, "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown Preview Toggle" },
-    }
- },
- {
-   "nvim-treesitter/nvim-treesitter-textobjects",
-   lazy = true,
-   config = function()
-     require("nvim-treesitter.configs").setup({
-       textobjects = {
-         select = {
-           enable = true,
+  },
+  {
+      "ThePrimeagen/harpoon",
+     lazy = false,
+     keys = {
+       { "<leader>9", mode = { "n" }, function() require("harpoon.ui").toggle_quick_menu() end },
+       { "<leader>0", mode = { "n" }, function() require("harpoon.mark").add_file() end },
+       { "<leader>1", mode = { "n" }, function() require("harpoon.ui").nav_prev() end },
+       { "<leader>2", mode = { "n" }, function() require("harpoon.ui").nav_next() end },
+     }, 
+  },
+  {
+     "iamcco/markdown-preview.nvim",
+     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+     ft = { "markdown" },
+     build = function()
+       vim.fn["mkdp#util#install"]()
+     end,
+     keys = {
+       { "<leader>pm", mode = { "n"}, "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown Preview Toggle" },
+     }
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    lazy = true,
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        textobjects = {
+          select = {
+            enable = true,
+ 
+            -- Automatically jump forward to textobj, similar to targets.vim
+            lookahead = true,
+  
+            keymaps = {
+              ["a="] = { query = "@assignment.outer", desc = "Select outer part of an assignment" },
+              ["i="] = { query = "@assignment.inner", desc = "Select inner part of an assignment" },
+  
+              ["al"] = { query = "@loop.outer", desc = "Select outer part of a loop" },
+              ["il"] = { query = "@loop.inner", desc = "Select inner part of a loop" },
+  
+              ["af"] = { query = "@function.outer", desc = "Select outer part of a method/function definition" },
+              ["if"] = { query = "@function.inner", desc = "Select inner part of a method/function definition" },
+  
+              ["ac"] = { query = "@class.outer", desc = "Select outer part of a class" },
+              ["ic"] = { query = "@class.inner", desc = "Select inner part of a class" },
+            },
+          },
+          swap = {
+            enable = true,
+            swap_next = {
+              ["<leader>na"] = "@parameter.inner", -- swap parameters/argument with next
+              ["<leader>nm"] = "@function.outer", -- swap function with next
+            },
+            swap_previous = {
+              ["<leader>pa"] = "@parameter.inner", -- swap parameters/argument with prev
+              ["<leader>pm"] = "@function.outer", -- swap function with previous
+            },
+          },
+          move = {
+            enable = true,
+            set_jumps = true, -- whether to set jumps in the jumplist
+            goto_next_start = {
+              ["]f"] = { query = "@function.outer", desc = "Next method/function def start" },
+              ["]c"] = { query = "@class.outer", desc = "Next class start" },
+              ["]i"] = { query = "@conditional.outer", desc = "Next conditional start" },
+              ["]l"] = { query = "@loop.outer", desc = "Next loop start" },
+  
+              -- You can pass a query group to use query from `queries/<lang>/<query_group>.scm file in your runtime path.
+              -- Below example nvim-treesitter's `locals.scm` and `folds.scm`. They also provide highlights.scm and indent.scm.
+              ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
+              ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+            },
+            goto_next_end = {
+              ["]F"] = { query = "@function.outer", desc = "Next method/function def end" },
+              ["]C"] = { query = "@class.outer", desc = "Next class end" },
+              ["]I"] = { query = "@conditional.outer", desc = "Next conditional end" },
+              ["]L"] = { query = "@loop.outer", desc = "Next loop end" },
+            },
+            goto_previous_start = {
+              ["[f"] = { query = "@function.outer", desc = "Prev method/function def start" },
+              ["[c"] = { query = "@class.outer", desc = "Prev class start" },
+              ["[i"] = { query = "@conditional.outer", desc = "Prev conditional start" },
+              ["[l"] = { query = "@loop.outer", desc = "Prev loop start" },
+            },
+            goto_previous_end = {
+              ["[F"] = { query = "@function.outer", desc = "Prev method/function def end" },
+              ["[C"] = { query = "@class.outer", desc = "Prev class end" },
+              ["[I"] = { query = "@conditional.outer", desc = "Prev conditional end" },
+              ["[L"] = { query = "@loop.outer", desc = "Prev loop end" },
+            },
+          },
+        },
+      })
+  
+      local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+ 
+      -- vim way: ; goes to the direction you were moving.
+      vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
+      vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
 
-           -- Automatically jump forward to textobj, similar to targets.vim
-           lookahead = true,
- 
-           keymaps = {
-             ["a="] = { query = "@assignment.outer", desc = "Select outer part of an assignment" },
-             ["i="] = { query = "@assignment.inner", desc = "Select inner part of an assignment" },
- 
-             ["al"] = { query = "@loop.outer", desc = "Select outer part of a loop" },
-             ["il"] = { query = "@loop.inner", desc = "Select inner part of a loop" },
- 
-             ["af"] = { query = "@function.outer", desc = "Select outer part of a method/function definition" },
-             ["if"] = { query = "@function.inner", desc = "Select inner part of a method/function definition" },
- 
-             ["ac"] = { query = "@class.outer", desc = "Select outer part of a class" },
-             ["ic"] = { query = "@class.inner", desc = "Select inner part of a class" },
-           },
-         },
-         swap = {
-           enable = true,
-           swap_next = {
-             ["<leader>na"] = "@parameter.inner", -- swap parameters/argument with next
-             ["<leader>nm"] = "@function.outer", -- swap function with next
-           },
-           swap_previous = {
-             ["<leader>pa"] = "@parameter.inner", -- swap parameters/argument with prev
-             ["<leader>pm"] = "@function.outer", -- swap function with previous
-           },
-         },
-         move = {
-           enable = true,
-           set_jumps = true, -- whether to set jumps in the jumplist
-           goto_next_start = {
-             ["]f"] = { query = "@function.outer", desc = "Next method/function def start" },
-             ["]c"] = { query = "@class.outer", desc = "Next class start" },
-             ["]i"] = { query = "@conditional.outer", desc = "Next conditional start" },
-             ["]l"] = { query = "@loop.outer", desc = "Next loop start" },
- 
-             -- You can pass a query group to use query from `queries/<lang>/<query_group>.scm file in your runtime path.
-             -- Below example nvim-treesitter's `locals.scm` and `folds.scm`. They also provide highlights.scm and indent.scm.
-             ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
-             ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
-           },
-           goto_next_end = {
-             ["]F"] = { query = "@function.outer", desc = "Next method/function def end" },
-             ["]C"] = { query = "@class.outer", desc = "Next class end" },
-             ["]I"] = { query = "@conditional.outer", desc = "Next conditional end" },
-             ["]L"] = { query = "@loop.outer", desc = "Next loop end" },
-           },
-           goto_previous_start = {
-             ["[f"] = { query = "@function.outer", desc = "Prev method/function def start" },
-             ["[c"] = { query = "@class.outer", desc = "Prev class start" },
-             ["[i"] = { query = "@conditional.outer", desc = "Prev conditional start" },
-             ["[l"] = { query = "@loop.outer", desc = "Prev loop start" },
-           },
-           goto_previous_end = {
-             ["[F"] = { query = "@function.outer", desc = "Prev method/function def end" },
-             ["[C"] = { query = "@class.outer", desc = "Prev class end" },
-             ["[I"] = { query = "@conditional.outer", desc = "Prev conditional end" },
-             ["[L"] = { query = "@loop.outer", desc = "Prev loop end" },
-           },
-         },
-       },
-     })
- 
-     local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
- 
-     -- vim way: ; goes to the direction you were moving.
-     vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
-     vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
- 
-     -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
-     vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f)
-     vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
-     vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
-     vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
-   end,
- }
+      -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
+      vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f)
+      vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
+      vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
+      vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
+    end,
+  },
+  {
+    "msaelices/nvim-howto",
+    lazy = false,
+  },
+  -- While developing the plugin, I have to use the local path
+  -- {
+  --   dir = '~/src/my-repos/nvim-howto/',
+  --   config = true,
+  --   docs = true,
+  --   lazy = false,
+  -- },
 }
+
 return plugins

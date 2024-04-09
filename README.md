@@ -45,7 +45,7 @@ pip install ruff
 sudo apt-get install xclip
 ```
 
-- [lookatme]() for markdown preview as slides
+- [lookatme](https://github.com/d0c-s4vage/lookatme) for markdown preview as slides
 
 ```bash
 pip install lookatme
@@ -53,6 +53,12 @@ pip install lookatme
 or:
 ```bash
 sudo apt-get install lookatme
+```
+
+- [Vue Language Server](https://github.com/vuejs/vetur/tree/master/server)
+
+```bash
+npm install -g vls
 ```
 
 3. Install [NvChad](https://nvchad.com/docs/quickstart/install) dependencies, including the [Nerd fonts](https://www.nerdfonts.com/) to have all the unicode icons available.

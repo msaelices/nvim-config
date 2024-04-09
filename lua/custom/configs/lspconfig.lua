@@ -28,9 +28,14 @@ lspconfig.ruff_lsp.setup({
   }
 })
 
-
 lspconfig.pyright.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = {"python"},
+})
+
+lspconfig.vuels.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = {"vue"},
 })
