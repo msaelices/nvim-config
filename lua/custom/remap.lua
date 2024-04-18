@@ -32,17 +32,10 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- Insert python breakpoint()
 vim.keymap.set("n", "<leader>d", "obreakpoint()<esc>")
 
--- Navigate up, down, left, and right between splits.
-vim.keymap.set("n", "<leader>h", "<c-w>h")
-vim.keymap.set("n", "<leader>j", "<c-w>j")
-vim.keymap.set("n", "<leader>k", "<c-w>k")
-vim.keymap.set("n", "<leader>l", "<c-w>l")
-
 -- Navigate left and right between buffers
 
-vim.keymap.set("n", "<leader><Left>", "<cmd>bp<CR>")
-vim.keymap.set("n", "<leader><Right>", "<cmd>bn<CR>")
-
+vim.keymap.set("n", "<leader>h", "<cmd>bp<CR>")
+vim.keymap.set("n", "<leader>l", "<cmd>bn<CR>")
 
 -- Navigate between LSP diagnosis issues
 

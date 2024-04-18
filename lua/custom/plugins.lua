@@ -28,6 +28,14 @@ local plugins = {
           enabled = true,
           auto_trigger = true,
         },
+        filetypes = {
+            yaml = false,
+            markdown = true,  -- different from the default
+            help = false,
+            gitcommit = false,
+            gitrebase = false,
+            ["."] = false,
+        },
       })
     end,
   },
@@ -181,6 +189,8 @@ local plugins = {
               ["a="] = { query = "@assignment.outer", desc = "Select outer part of an assignment" },
               ["i="] = { query = "@assignment.inner", desc = "Select inner part of an assignment" },
   
+              ["ab"] = { query = "@block.outer", desc = "Select outer part of an block" },
+              ["ib"] = { query = "@block.inner", desc = "Select inner part of an block" },
               ["al"] = { query = "@loop.outer", desc = "Select outer part of a loop" },
               ["il"] = { query = "@loop.inner", desc = "Select inner part of a loop" },
   
@@ -251,17 +261,17 @@ local plugins = {
       vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
     end,
   },
-  {
-    "msaelices/nvim-howto",
-    lazy = false,
-  },
-  -- While developing the plugin, I have to use the local path
   -- {
-  --   dir = '~/src/my-repos/nvim-howto/',
-  --   config = true,
-  --   docs = true,
+  --   "msaelices/nvim-howto",
   --   lazy = false,
   -- },
+  -- While developing the plugin, I have to use the local path
+  {
+    dir = '~/src/my-repos/nvim-howto/',
+    config = true,
+    docs = true,
+    lazy = false,
+  },
 }
 
 return plugins

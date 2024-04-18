@@ -71,7 +71,7 @@ git clone git@github.com:msaelices/nvim-python.git ~/.config/nvim
 
 5. Execute `nvim` and let [Lazy.vim](https://www.lazyvim.org/) and [Masoni.vim](https://github.com/williamboman/mason.nvim) to install all the plugins.
 
-6. Press `Space t h` and install the theme of your preference.
+6. Press `Space t t` and install the theme of your preference.
 
 
 ## Plugin lists
