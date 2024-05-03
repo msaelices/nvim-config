@@ -81,6 +81,8 @@ local default_plugins = {
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "syntax")
       require("nvim-treesitter.configs").setup(opts)
+      -- use the python highlighter for .mojo files, which are recognized as conf ones
+      vim.treesitter.language.register('python', 'conf')
     end,
   },
 
