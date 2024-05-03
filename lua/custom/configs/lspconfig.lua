@@ -39,3 +39,9 @@ lspconfig.vuels.setup({
     capabilities = capabilities,
     filetypes = {"vue"},
 })
+
+lspconfig.mojo.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = {"conf"},  -- The mojo filetype is not recognized as mojo but as conf
+})
