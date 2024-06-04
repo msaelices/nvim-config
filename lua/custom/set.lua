@@ -1,3 +1,4 @@
+vim.opt.autoread = true
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -9,6 +10,7 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
+vim.opt.endofline = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
