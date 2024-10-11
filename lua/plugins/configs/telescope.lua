@@ -13,6 +13,11 @@ local options = {
     prompt_prefix = "   ",
     selection_caret = "  ",
     entry_prefix = "  ",
+    pickers = {
+      find_files = {
+        hidden = true,
+      },
+    },
     initial_mode = "insert",
     selection_strategy = "reset",
     sorting_strategy = "ascending",

@@ -58,4 +58,4 @@ vim.keymap.set('v', '<leader>p', '"+p', {noremap = true, silent = true})
 vim.keymap.set('v', '<leader>P', '"+P', {noremap = true, silent = true})
 
 -- Open the telescope file browser
-vim.keymap.set("n", "<C-p>", "<cmd>Telescope find_files<CR>")
+vim.keymap.set("n", "<C-p>", "<cmd>Telescope find_files hidden=true<CR>")
