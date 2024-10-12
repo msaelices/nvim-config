@@ -96,6 +96,14 @@ local default_plugins = {
         },
         filetype = "mojo", -- if filetype does not match the parser name
       }
+
+      -- Set the comment string for Mojo files
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "mojo",
+        callback = function()
+          vim.bo.commentstring = "# %s"
+        end,
+      })
     end,
   },
 
