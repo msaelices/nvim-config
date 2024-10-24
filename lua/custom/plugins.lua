@@ -278,6 +278,16 @@ local plugins = {
         temperature = 0,
         max_tokens = 4096,
       },
+      windows = {
+        ask = {
+          -- Set the window to be floating
+          floating = true,
+          start_insert = true,
+        },
+        edit = {
+          start_insert = true, -- Start insert mode when opening the edit window
+        },
+      },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
