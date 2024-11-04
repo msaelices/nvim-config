@@ -184,12 +184,6 @@ Note: change the `v` command with `d`, `c` or `y` to delete, change or yank the 
 - `<leader>p:`: swap object property with prev
 - `<leader>pm`: swap function with previous
  
-### Code outline navigation
-
-- `<Space> a`: Open the aereal code outline window
-- `{`: Navigate to the previous symbol in the code outline
-- `}`: Navigate to the next symbol in the code outline
-
 ### Increment or decrement numbers
 
 - `Ctrl-a`: Increment the number under the cursor
