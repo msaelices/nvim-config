@@ -456,8 +456,7 @@ local plugins = {
           "nvim-telescope/telescope.nvim", -- optional
       },
       config = function ()
-        vim.keymap.set("n", "<leader>gg", ":Neogit<CR>")
-        vim.keymap.set("n", "<leader>gs", ":Neogit status<CR>")
+        vim.keymap.set("n", "<leader>gs", ":Neogit<CR>")
         vim.keymap.set("n", "<leader>gc", ":Neogit commit<CR>")
         vim.keymap.set("n", "<leader>gp", ":Neogit pull<CR>")
         vim.keymap.set("n", "<leader>gP", ":Neogit push<CR>")
