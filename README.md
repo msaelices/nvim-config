@@ -97,6 +97,8 @@ git clone git@github.com:msaelices/nvim-config.git ~/.config/nvim
 - [REMOVED] Debugging Python scripts with [nvim-dap-python](https://github.com/mfussenegger/nvim-dap-python)
 - Linting and formatting with [Ruff](https://github.com/astral-sh/ruff) and [Pyright](https://github.com/microsoft/pyright)
 - Quick navigation between starred files with [Harpoon](https://github.com/ThePrimeagen/harpoon)
+- Cursor.ai similar AI powered code completion with avante.nvim
+- Git management with LazyGit and Neogit
 
 ## Tips and tricks
 
