@@ -5,7 +5,7 @@ local capabilities = config.capabilities
 
 local lspconfig = require("lspconfig")
 
-lspconfig.ruff_lsp.setup({
+lspconfig.ruff.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   autoformat = true,
@@ -25,7 +25,7 @@ lspconfig.ruff_lsp.setup({
           },
         },
       },
-  }
+  },
 })
 
 lspconfig.pyright.setup({
