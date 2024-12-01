@@ -445,7 +445,27 @@ local plugins = {
       }
     end,
   },
-  { "rcarriga/nvim-dap-ui", lazy=false, dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
+  { "rcarriga/nvim-dap-ui", lazy=false, dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} },
+  {
+      "NeogitOrg/neogit",
+      lazy = false,
+      dependencies = {
+          "nvim-lua/plenary.nvim",         -- required
+          "sindrets/diffview.nvim",        -- optional - Diff integration
+
+          "nvim-telescope/telescope.nvim", -- optional
+      },
+      config = function ()
+        vim.keymap.set("n", "<leader>gg", ":Neogit<CR>")
+        vim.keymap.set("n", "<leader>gs", ":Neogit status<CR>")
+        vim.keymap.set("n", "<leader>gc", ":Neogit commit<CR>")
+        vim.keymap.set("n", "<leader>gp", ":Neogit pull<CR>")
+        vim.keymap.set("n", "<leader>gP", ":Neogit push<CR>")
+        vim.keymap.set("n", "<leader>gb", ":Telescope git_branches<CR>")
+        vim.keymap.set("n", "<leader>gl", ":Telescope git_commits<CR>")
+        vim.keymap.set("n", "<leader>gB", ":G blame<CR>")
+      end,
+  },
 }
 
 return plugins
