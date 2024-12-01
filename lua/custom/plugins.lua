@@ -135,7 +135,7 @@ local plugins = {
   --     { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
   --   },
   -- },
-  { 
+  {
     "andymass/vim-matchup",
     config = function()
       require("nvim-treesitter.configs").setup({
@@ -160,7 +160,7 @@ local plugins = {
        { "<leader>0", mode = { "n" }, function() require("harpoon.mark").add_file() end },
        { "<leader>1", mode = { "n" }, function() require("harpoon.ui").nav_prev() end },
        { "<leader>2", mode = { "n" }, function() require("harpoon.ui").nav_next() end },
-     }, 
+     },
   },
   {
      "iamcco/markdown-preview.nvim",
@@ -338,6 +338,114 @@ local plugins = {
     docs = true,
     lazy = false,
   },
+  -- nvim-dap setup
+  {
+    "mfussenegger/nvim-dap",
+    lazy = false,
+    keys = {
+      { "<leader>d", mode = {"n" }, desc = "Open Debug menu" },
+      -- { "n", "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<CR>", desc = "Toggle breakpoint" },
+      -- { "n", "<leader>dc", "<cmd>lua require('dap').continue()<CR>", desc = "Continue" },
+      -- { "n", "<leader>dr", "<cmd>lua require('dap').repl.toggle()<CR>", desc = "Toggle REPL" },
+      -- { "n", "<leader>ds", "<cmd>lua require('dap').start()<CR>", desc = "Start" },
+      -- { "n", "<leader>dt", "<cmd>lua require('dap').step_over()<CR>", desc = "Step over" },
+      -- { "n", "<leader>di", "<cmd>lua require('dap').step_into()<CR>", desc = "Step into" },
+      -- { "n", "<leader>do", "<cmd>lua require('dap').step_out()<CR>", desc = "Step out" },
+      -- { "n", "<leader>dl", "<cmd>lua require('dap').run_last()<CR>", desc = "Run last" },
+    },
+    config = function()
+      local dap = require("dap")
+      require("dapui").setup()
+
+      local dap, dapui = require("dap"), require("dapui")
+
+      dap.listeners.after.event_initialized["dapui_config"] = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated["dapui_config"] = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited["dapui_config"] = function()
+        dapui.close()
+      end
+
+      vim.keymap.set("n", "<Leader>dc", ':DapContinue<CR>')
+      vim.keymap.set("n", "<Leader>dt", ':DapToggleBreakpoint<CR>')
+      vim.keymap.set("n", "<Leader>dx", ':DapTerminate<CR>')
+      vim.keymap.set("n", "<Leader>do", ':DapStepOver<CR>')
+      vim.keymap.set("n", "<Leader>di", ':DapStepInto<CR>')
+
+      -- dap.adapters.mojo = function(cb, config)
+      --   if config.request == 'attach' then
+      --     local port = 12355
+      --     local host = '127.0.0.1'
+      --     cb({
+      --       type = 'server',
+      --       port = port,
+      --       host = host,
+      --       options = {
+      --         source_filetype = 'mojo',
+      --       },
+      --     })
+      --   else
+      --   end
+      -- end
+
+      -- dap.adapters.mojo = {
+      --   -- type = 'executable',
+      --   -- command = 'mojo',
+      --   --
+      --   type = "server",
+      --   host = '127.0.0.1',
+      --   port = 12355,
+      -- }
+      --
+      -- dap.configurations.mojo = {
+      --   {
+      --
+      --       type = 'mojo',
+      --       request = 'launch',
+      --       name = 'Launch',
+      --       program = function()
+      --         return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      --       end,
+      --       cwd = '${workspaceFolder}',
+      --       stopOnEntry = false,
+      --       args = {},
+      --       runInTerminal = true,
+      --   },
+      -- }
+
+      dap.adapters.codelldb = {
+        type = "server",
+        port = "${port}",
+        executable = {
+          -- I installed codelldb through mason.nvim
+          command = "$HOME/.local/share/nvim/mason/bin/codelldb",
+          args = {"--port", "${port}"},
+        },
+      }
+      --
+      dap.configurations.mojo = {
+        {
+         -- type = 'lldb',
+         type = 'codelldb',
+         request = 'launch',
+         name = 'Launch',
+         program = function()
+           return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+         end,
+         cwd = '${workspaceFolder}',
+         stopOnEntry = false,
+         args = {},
+
+         -- Customize LLDB settings
+         runInTerminal = true,
+        },
+      }
+    end,
+  },
+  { "rcarriga/nvim-dap-ui", lazy=false, dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
 }
 
 return plugins
