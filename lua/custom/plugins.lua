@@ -478,6 +478,25 @@ local plugins = {
         vim.keymap.set("n", "<leader>gB", ":G blame<CR>")
       end,
   },
+  {
+    "ntpeters/vim-better-whitespace",
+    event = 'BufRead', -- Lazy load on buffer read
+    config = function()
+      -- Enable automatic stripping of whitespace on save
+      vim.g.strip_whitespace_on_save = 1
+
+      -- Optionally, disable automatic stripping on load
+      vim.g.strip_whitespace_on_load = 0
+
+      -- Customize the highlight for trailing whitespace
+      vim.cmd [[
+        highlight ExtraWhitespace ctermbg=red guibg=red
+      ]]
+
+      -- Optionally, set the characters to highlight
+      vim.g.better_whitespace_enabled = 1
+    end,
+  },
 }
 
 return plugins
