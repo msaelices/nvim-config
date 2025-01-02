@@ -85,9 +85,9 @@ local default_plugins = {
       -- vim.treesitter.language.register('python', 'conf')
 
       local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-      parser_config.zimbu = {
+      parser_config.mojo = {
         install_info = {
-          url = "~/src/tree-sitter-mojo", -- local path or git repo
+          url = "https://github.com/lsh/tree-sitter-mojo", -- local path or git repo
           files = {"src/parser.c"}, -- note that some parsers also require src/scanner.c or src/scanner.cc
           -- optional entries:
           branch = "main", -- default branch in case of git repo if different from master
