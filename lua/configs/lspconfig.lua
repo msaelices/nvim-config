@@ -40,10 +40,29 @@ lspconfig.ruff.setup {
   },
 }
 
+-- We keep using pyright along with Ruff for go to definition and hover
 lspconfig.pyright.setup {
   on_attach = nvlsp.on_attach,
   capabilities = nvlsp.capabilities,
   filetypes = { "python" },
+  settings = {
+    python = {
+      analysis = {
+        typeCheckingMode = "off",
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = "off",
+        autoImportCompletions = false,
+      },
+      linting = {
+        enabled = false,
+      },
+    },
+  },
+  -- Disable all diagnostics from Pyright as we are using Ruff
+  handlers = {
+    ["textDocument/publishDiagnostics"] = function() end,
+  },
 }
 
 lspconfig.vuels.setup {
