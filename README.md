@@ -99,6 +99,7 @@ git clone git@github.com:msaelices/nvim-config.git ~/.config/nvim
 - Quick navigation between starred files with [Harpoon](https://github.com/ThePrimeagen/harpoon)
 - Cursor.ai similar AI powered code completion with avante.nvim
 - Git management with LazyGit and Neogit
+- Markdown preview with [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
 
 ## Tips and tricks
 
