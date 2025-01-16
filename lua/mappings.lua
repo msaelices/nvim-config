@@ -69,3 +69,7 @@ map("n", "<leader>p", '"+p', { noremap = true, silent = true })
 map("n", "<leader>P", '"+P', { noremap = true, silent = true })
 map("v", "<leader>p", '"+p', { noremap = true, silent = true })
 map("v", "<leader>P", '"+P', { noremap = true, silent = true })
+
+-- Ensure that after indenting (> or >) in visual mode, the selection remains active
+vim.api.nvim_set_keymap("v", ">", ">gv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<", "<gv", { noremap = true, silent = true })
