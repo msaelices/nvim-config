@@ -474,6 +474,30 @@ return {
   },
   { "rcarriga/nvim-dap-ui", lazy = false, dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
   {
+    "nvim-telescope/telescope.nvim",
+    lazy = false,
+    opts = {
+      vimgrep_arguments = {
+        "rg",
+        "-L",
+        "--color=never",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+        "--smart-case",
+      },
+      pickers = {
+        find_files = {
+          hidden = false,
+        },
+      },
+    },
+    config = function(_, opts)
+      require("telescope").setup(opts)
+    end,
+  },
+  {
     "NeogitOrg/neogit",
     lazy = false,
     dependencies = {
