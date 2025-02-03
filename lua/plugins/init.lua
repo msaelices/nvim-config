@@ -296,7 +296,8 @@ return {
     opts = {
       -- add any opts here
       laststatus = 3,
-      provider = "claude", -- Recommend using Claude
+      -- provider = "claude", -- Recommend using Claude
+      provider = "openrouter", -- Recommend using Claude
       auto_suggestions_provider = "claude", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
       auto_suggestions = true,
       claude = {
@@ -313,6 +314,14 @@ return {
         },
         edit = {
           start_insert = true, -- Start insert mode when opening the edit window
+        },
+      },
+      vendors = {
+        openrouter = {
+          __inherited_from = "openai",
+          endpoint = "https://openrouter.ai/api/v1",
+          api_key_name = "OPENROUTER_API_KEY",
+          model = "deepseek/deepseek-r1",
         },
       },
     },
