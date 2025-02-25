@@ -296,20 +296,20 @@ return {
     opts = {
       -- add any opts here
       laststatus = 3,
-      -- provider = "claude", -- Recommend using Claude
-      provider = "openrouter", -- Recommend using Claude
+      provider = "claude", -- Recommend using Claude
+      -- provider = "openrouter", -- To use with DeepSeek's R1
       auto_suggestions_provider = "claude", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
       auto_suggestions = true,
       claude = {
         endpoint = "https://api.anthropic.com",
-        model = "claude-3-5-sonnet-20241022",
+        model = "claude-3-7-sonnet-20250219",
         temperature = 0,
         max_tokens = 4096,
       },
       windows = {
         ask = {
           -- Set the window to be floating
-          floating = true,
+          floating = false,
           start_insert = true,
         },
         edit = {
