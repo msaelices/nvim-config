@@ -300,6 +300,9 @@ return {
       -- provider = "openrouter", -- To use with DeepSeek's R1
       auto_suggestions_provider = "claude", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
       auto_suggestions = true,
+      behaviour = {
+        enable_claude_text_editor_tool_mode = false, -- It's not working well yet, try again later
+      },
       claude = {
         endpoint = "https://api.anthropic.com",
         model = "claude-3-7-sonnet-20250219",
