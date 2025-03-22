@@ -327,6 +327,17 @@ return {
           model = "deepseek/deepseek-r1",
         },
       },
+      -- MCP Hub configuration
+      system_prompt = function()
+        local hub = require("mcphub").get_hub_instance()
+        return hub:get_active_servers_prompt()
+      end,
+      -- The custom_tools type supports both a list and a function that returns a list. Using a function here prevents requiring mcphub before it's loaded
+      custom_tools = function()
+        return {
+          require("mcphub.extensions.avante").mcp_tool(),
+        }
+      end,
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
@@ -486,6 +497,7 @@ return {
   },
   {
     "ravitemer/mcphub.nvim",
+    lazy = false,
     dependencies = {
       "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
     },
@@ -495,7 +507,7 @@ return {
       require("mcphub").setup {
         -- Required options
         port = 3000, -- Port for MCP Hub server
-        config = vim.fn.expand "~/mcpservers.json", -- Absolute path to config file
+        config = vim.fn.stdpath "config" .. "/mcpservers.json", -- Path to config file in nvim config directory
 
         -- Optional options
         on_ready = function(hub)
