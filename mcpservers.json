@@ -5,6 +5,9 @@
       "args": [
         "mcp-server-sentry"
       ],
+      "env": {
+	    "SENTRY_TOKEN": ""
+      },
       "disabled": false
     },
     "time": {
