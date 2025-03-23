@@ -3,9 +3,7 @@
     "sentry": {
       "command": "uvx",
       "args": [
-        "mcp-server-sentry",
-        "--auth-token",
-        "putyourtokenhere"
+        "mcp-server-sentry"
       ],
       "disabled": false
     },
