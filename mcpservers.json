@@ -1,21 +1,21 @@
 {
   "mcpServers": {
     "sentry": {
-      "command": "uvx",
+      "disabled": false,
       "args": [
         "mcp-server-sentry"
       ],
+      "command": "uvx",
       "env": {
-	    "SENTRY_TOKEN": ""
-      },
-      "disabled": false
+        "SENTRY_TOKEN": ""
+      }
     },
     "time": {
-      "command": "uvx",
       "args": [
         "mcp-server-time"
       ],
-      "disabled": false
+      "disabled": false,
+      "command": "uvx"
     }
   }
 }
