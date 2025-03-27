@@ -61,6 +61,12 @@ sudo apt-get install lookatme
 npm install -g vls
 ```
 
+- [MCP Hub](https://github.com/ravitemer/mcphub.nvim) for multi-LLM integration
+
+```bash
+npm install -g mcp-hub
+```
+
 3. Install [NvChad](https://nvchad.com/docs/quickstart/install) dependencies, including the [Nerd fonts](https://www.nerdfonts.com/) to have all the unicode icons available.
 
 4. Install this repo over the NvChad configuration
@@ -69,7 +75,7 @@ npm install -g vls
 git clone git@github.com:msaelices/nvim-config.git ~/.config/nvim
 ```
 
-5. Execute `nvim` and let [Lazy.vim](https://www.lazyvim.org/) and [Masoni.vim](https://github.com/williamboman/mason.nvim) to install all the plugins.
+5. Execute `nvim` and let [Lazy.vim](https://www.lazyvim.org/) and [Mason.nvim](https://github.com/williamboman/mason.nvim) to install all the plugins.
 
 6. Press `Space t t` and install the theme of your preference.
 
@@ -94,12 +100,25 @@ git clone git@github.com:msaelices/nvim-config.git ~/.config/nvim
 - Multi cursors with [vim-visual-multi](https://github.com/mg979/vim-visual-multi)
 
 ### Extra
-- [REMOVED] Debugging Python scripts with [nvim-dap-python](https://github.com/mfussenegger/nvim-dap-python)
+
 - Linting and formatting with [Ruff](https://github.com/astral-sh/ruff) and [Pyright](https://github.com/microsoft/pyright)
+- Code formatting with [conform.nvim](https://github.com/stevearc/conform.nvim)
 - Quick navigation between starred files with [Harpoon](https://github.com/ThePrimeagen/harpoon)
-- Cursor.ai similar AI powered code completion with avante.nvim
-- Git management with LazyGit and Neogit
-- Markdown preview with [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
+- AI integrations:
+  - GitHub Copilot with [copilot.lua](https://github.com/zbirenbaum/copilot.lua)
+  - Claude and other LLMs with [avante.nvim](https://github.com/yetone/avante.nvim)
+  - Multi-LLM management with [mcphub.nvim](https://github.com/ravitemer/mcphub.nvim)
+- Git management:
+  - [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim) for LazyGit integration
+  - [neogit](https://github.com/NeogitOrg/neogit) for Git operations within Neovim
+- Surround text objects with [nvim-surround](https://github.com/kylechui/nvim-surround)
+- Markdown tools:
+  - Preview with [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
+  - Presentation slides with [Telegraph.nvim](https://github.com/waylonwalker/Telegraph.nvim)
+- Code structure navigation with [aerial.nvim](https://github.com/stevearc/aerial.nvim)
+- Enhanced matching with [vim-matchup](https://github.com/andymass/vim-matchup)
+- Debugging with [nvim-dap](https://github.com/mfussenegger/nvim-dap) and [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)
+- Mojo language support
 
 ## Tips and tricks
 
@@ -220,8 +239,26 @@ Most vim commands work as expected (motions, `r` to replace characters, `~` to c
 
 See https://github.com/mg979/vim-visual-multi
 
-## Copilot
+### AI Tools
+
+#### Copilot
 
 - `Alt+l`: Accept the suggestion
 - `Alt+]`: Next suggestion
 - `Alt+[`: Previous suggestion
+
+#### Avante.nvim (Claude integration)
+
+- LLM-powered code completion and suggestions
+- Integrated with Claude and other LLMs via mcphub.nvim
+- Image pasting support
+
+### Git Commands
+
+- `<leader>lg`: Open LazyGit interface
+- `<leader>gs`: Open Neogit status
+- `<leader>gc`: Open Neogit commit dialog
+- `<leader>gp`: Pull changes with Neogit
+- `<leader>gP`: Push changes with Neogit
+- `<leader>gb`: Browse branches with Telescope
+- `<leader>gl`: Browse commits with Telescope
