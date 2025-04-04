@@ -7,7 +7,7 @@ mv ~/.config/nvim ~/.config/nvim.bak
 rm -rf ~/.local/share/nvim
 ```
 
-2. Install the pre-dependencies, like LSPs and node.js:
+2. Install the pre-dependencies, like LSPs and node.js (>= 22.0):
 
 - [universal-ctags](https://github.com/universal-ctags/ctags):
 

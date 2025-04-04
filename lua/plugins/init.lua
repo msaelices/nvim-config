@@ -605,6 +605,11 @@ return {
       })
     end,
   },
+  {
+    "augmentcode/augment.vim",
+    lazy = false,
+  },
+
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {
