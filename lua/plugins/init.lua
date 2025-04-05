@@ -12,25 +12,33 @@ return {
       require "configs.lspconfig"
     end,
   },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  --   config = function()
+  --     require("copilot").setup {
+  --       suggestion = {
+  --         enabled = true,
+  --         auto_trigger = true,
+  --       },
+  --       filetypes = {
+  --         yaml = false,
+  --         markdown = true, -- different from the default
+  --         help = false,
+  --         gitcommit = false,
+  --         gitrebase = false,
+  --         ["."] = false,
+  --       },
+  --     }
+  --   end,
+  -- },
   {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
+    "augmentcode/augment.vim",
+    lazy = false,
     config = function()
-      require("copilot").setup {
-        suggestion = {
-          enabled = true,
-          auto_trigger = true,
-        },
-        filetypes = {
-          yaml = false,
-          markdown = true, -- different from the default
-          help = false,
-          gitcommit = false,
-          gitrebase = false,
-          ["."] = false,
-        },
-      }
+      vim.g.augment_disable_tab_mapping = true
+      vim.keymap.set("i", "<M-l>", "<cmd>call augment#Accept()<CR>", { noremap = true })
     end,
   },
   {
@@ -604,10 +612,6 @@ return {
         end,
       })
     end,
-  },
-  {
-    "augmentcode/augment.vim",
-    lazy = false,
   },
 
   -- {
