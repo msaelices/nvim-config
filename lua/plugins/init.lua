@@ -12,35 +12,35 @@ return {
       require "configs.lspconfig"
     end,
   },
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   cmd = "Copilot",
-  --   event = "InsertEnter",
-  --   config = function()
-  --     require("copilot").setup {
-  --       suggestion = {
-  --         enabled = true,
-  --         auto_trigger = true,
-  --       },
-  --       filetypes = {
-  --         yaml = false,
-  --         markdown = true, -- different from the default
-  --         help = false,
-  --         gitcommit = false,
-  --         gitrebase = false,
-  --         ["."] = false,
-  --       },
-  --     }
-  --   end,
-  -- },
   {
-    "augmentcode/augment.vim",
-    lazy = false,
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
     config = function()
-      vim.g.augment_disable_tab_mapping = true
-      vim.keymap.set("i", "<M-l>", "<cmd>call augment#Accept()<CR>", { noremap = true })
+      require("copilot").setup {
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+        },
+        filetypes = {
+          yaml = false,
+          markdown = true, -- different from the default
+          help = false,
+          gitcommit = false,
+          gitrebase = false,
+          ["."] = false,
+        },
+      }
     end,
   },
+  -- {
+  --   "augmentcode/augment.vim",
+  --   lazy = false,
+  --   config = function()
+  --     vim.g.augment_disable_tab_mapping = true
+  --     vim.keymap.set("i", "<M-l>", "<cmd>call augment#Accept()<CR>", { noremap = true })
+  --   end,
+  -- },
   {
     "stevearc/aerial.nvim",
     lazy = false,
@@ -336,16 +336,16 @@ return {
         },
       },
       -- MCP Hub configuration
-      system_prompt = function()
-        local hub = require("mcphub").get_hub_instance()
-        return hub:get_active_servers_prompt()
-      end,
+      -- system_prompt = function()
+      --   local hub = require("mcphub").get_hub_instance()
+      --   return hub:get_active_servers_prompt()
+      -- end,
       -- The custom_tools type supports both a list and a function that returns a list. Using a function here prevents requiring mcphub before it's loaded
-      custom_tools = function()
-        return {
-          require("mcphub.extensions.avante").mcp_tool(),
-        }
-      end,
+      -- custom_tools = function()
+      --   return {
+      --     require("mcphub.extensions.avante").mcp_tool(),
+      --   }
+      -- end,
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
@@ -505,7 +505,7 @@ return {
   },
   {
     "ravitemer/mcphub.nvim",
-    lazy = false,
+    lazy = true,
     dependencies = {
       "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
     },
