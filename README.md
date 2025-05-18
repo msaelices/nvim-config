@@ -205,6 +205,14 @@ Note: change the `v` command with `d`, `c` or `y` to delete, change or yank the 
 - `<leader>pa`: swap parameters/argument with prev
 - `<leader>p:`: swap object property with prev
 - `<leader>pm`: swap function with previous
+
+### Motions in Git with Gitsigns and Neogit
+
+- `[c`: Go to the previous hunk
+- `]c`: Go to the next hunk
+- `<Space> hq`: Move the hunks to the quickfix list
+- `<Space> g s`: Show the diff of the current line
+- `<Space> g b`: Show the diff of the current buffer
  
 ### Increment or decrement numbers
 
