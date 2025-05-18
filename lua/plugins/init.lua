@@ -305,11 +305,14 @@ return {
       -- add any opts here
       laststatus = 3,
       provider = "claude", -- Recommend using Claude
+      mode = "agentic",
       -- provider = "openrouter", -- To use with DeepSeek's R1
       auto_suggestions_provider = "claude", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
+      cursor_applying_provider = "groq", -- See https://github.com/yetone/avante.nvim/blob/main/cursor-planning-mode.md
       auto_suggestions = true,
       behaviour = {
         enable_claude_text_editor_tool_mode = false, -- It's not working well yet, try again later
+        enable_cursor_planning_mode = true, -- enable cursor planning mode!
       },
       claude = {
         endpoint = "https://api.anthropic.com",
@@ -333,6 +336,13 @@ return {
           endpoint = "https://openrouter.ai/api/v1",
           api_key_name = "OPENROUTER_API_KEY",
           model = "deepseek/deepseek-r1",
+        },
+        groq = { -- define groq provider
+          __inherited_from = "openai",
+          api_key_name = "GROQ_API_KEY",
+          endpoint = "https://api.groq.com/openai/v1/",
+          model = "llama-3.3-70b-versatile",
+          max_completion_tokens = 65536, -- remember to increase this value, otherwise it will stop generating halfway
         },
       },
       -- MCP Hub configuration
@@ -685,7 +695,11 @@ return {
       }
     end,
   },
-
+  {
+    "chentoast/marks.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {
