@@ -78,4 +78,13 @@ lspconfig.mojo.setup {
   autoformat = true,
 }
 
-lspconfig.harper_ls.setup {}
+lspconfig.harper_ls.setup {
+  settings = {
+    ["harper-ls"] = {
+      linters = {
+        SentenceCapitalization = false,
+        SpellCheck = false,
+      },
+    },
+  },
+}
