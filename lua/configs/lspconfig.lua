@@ -77,3 +77,5 @@ lspconfig.mojo.setup {
   filetypes = { "mojo" }, -- The mojo filetype is not recognized as mojo but as conf
   autoformat = true,
 }
+
+lspconfig.harper_ls.setup {}
