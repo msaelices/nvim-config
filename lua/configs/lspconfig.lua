@@ -4,7 +4,7 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 
 -- EXAMPLE
-local servers = { "html", "cssls" }
+local servers = { "html", "cssls", "mojo" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config
@@ -74,7 +74,6 @@ lspconfig.vuels.setup {
 lspconfig.mojo.setup {
   on_attach = nvlsp.on_attach,
   capabilities = nvlsp.capabilities,
-  filetypes = { "mojo" }, -- The mojo filetype is not recognized as mojo but as conf
   autoformat = true,
 }
 

@@ -314,12 +314,6 @@ return {
         enable_claude_text_editor_tool_mode = false, -- It's not working well yet, try again later
         enable_cursor_planning_mode = true, -- enable cursor planning mode!
       },
-      claude = {
-        endpoint = "https://api.anthropic.com",
-        model = "claude-3-7-sonnet-20250219",
-        temperature = 0,
-        max_tokens = 4096,
-      },
       windows = {
         ask = {
           -- Set the window to be floating
@@ -330,7 +324,15 @@ return {
           start_insert = true, -- Start insert mode when opening the edit window
         },
       },
-      vendors = {
+      providers = {
+        claude = {
+          endpoint = "https://api.anthropic.com",
+          model = "claude-3-7-sonnet-20250219",
+          extra_request_body = {
+            max_tokens = 4096,
+            temperature = 0,
+          },
+        },
         openrouter = {
           __inherited_from = "openai",
           endpoint = "https://openrouter.ai/api/v1",
@@ -342,7 +344,9 @@ return {
           api_key_name = "GROQ_API_KEY",
           endpoint = "https://api.groq.com/openai/v1/",
           model = "llama-3.3-70b-versatile",
-          max_completion_tokens = 65536, -- remember to increase this value, otherwise it will stop generating halfway
+          extra_request_body = {
+            max_completion_tokens = 65536, -- remember to increase this value, otherwise it will stop generating halfway
+          },
         },
       },
       -- MCP Hub configuration
