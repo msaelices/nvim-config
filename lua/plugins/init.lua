@@ -349,17 +349,6 @@ return {
           },
         },
       },
-      -- MCP Hub configuration
-      -- system_prompt = function()
-      --   local hub = require("mcphub").get_hub_instance()
-      --   return hub:get_active_servers_prompt()
-      -- end,
-      -- The custom_tools type supports both a list and a function that returns a list. Using a function here prevents requiring mcphub before it's loaded
-      -- custom_tools = function()
-      --   return {
-      --     require("mcphub.extensions.avante").mcp_tool(),
-      --   }
-      -- end,
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
@@ -404,12 +393,12 @@ return {
   --   lazy = false,
   -- },
   -- While developing the plugin, I have to use the local path
-  {
-    dir = "~/src/my-repos/nvim-howto/",
-    config = true,
-    docs = true,
-    lazy = false,
-  },
+  -- {
+  --   dir = "~/src/my-repos/nvim-howto/",
+  --   config = true,
+  --   docs = true,
+  --   lazy = false,
+  -- },
   -- nvim-dap setup
   {
     "mfussenegger/nvim-dap",
@@ -513,36 +502,6 @@ return {
 
           -- Customize LLDB settings
           runInTerminal = true,
-        },
-      }
-    end,
-  },
-  {
-    "ravitemer/mcphub.nvim",
-    lazy = true,
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
-    },
-    -- cmd = "MCPHub", -- lazily start the hub when `MCPHub` is called
-    build = "npm install -g mcp-hub@latest", -- Installs required mcp-hub npm module
-    config = function()
-      require("mcphub").setup {
-        -- Required options
-        port = 3000, -- Port for MCP Hub server
-        config = vim.fn.stdpath "config" .. "/mcpservers.json", -- Path to config file in nvim config directory
-
-        -- Optional options
-        on_ready = function(hub)
-          -- Called when hub is ready
-        end,
-        on_error = function(err)
-          -- Called on errors
-        end,
-        log = {
-          level = vim.log.levels.WARN,
-          to_file = false,
-          file_path = nil,
-          prefix = "MCPHub",
         },
       }
     end,
