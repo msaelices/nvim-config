@@ -1,5 +1,17 @@
 -- load defaults i.e lua_lsp
-require("nvchad.configs.lspconfig").defaults()
+local nvlsp = require "nvchad.configs.lspconfig"
+nvlsp.defaults()
+
+-- Override NvChad's on_init to use method-call syntax (client.supports_method is
+-- deprecated in nvim 0.11+; the colon form passes the client as self).
+vim.lsp.config("*", {
+  capabilities = nvlsp.capabilities,
+  on_init = function(client, _)
+    if client:supports_method "textDocument/semanticTokens" then
+      client.server_capabilities.semanticTokensProvider = nil
+    end
+  end,
+})
 
 -- lsps with default config
 local servers = { "html", "cssls", "mojo" }
