@@ -602,6 +602,73 @@ return {
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "syntax")
       require("nvim-treesitter.configs").setup(opts)
+
+      -- Compat shim for nvim 0.12+: match[capture_id] is now TSNode[] instead of TSNode.
+      -- nvim-treesitter's master branch (archived) does not handle this, so re-register
+      -- the directives/predicates that break with render-markdown and similar plugins.
+      local tsquery = require "vim.treesitter.query"
+      local function first_node(v)
+        if type(v) == "table" and not v.range then
+          return v[1]
+        end
+        return v
+      end
+
+      local markdown_lang_aliases = {
+        ex = "elixir",
+        pl = "perl",
+        sh = "bash",
+        uxn = "uxntal",
+        ts = "typescript",
+      }
+      local function resolve_markdown_lang(alias)
+        local m = vim.filetype.match { filename = "a." .. alias }
+        return m or markdown_lang_aliases[alias] or alias
+      end
+
+      tsquery.add_directive("set-lang-from-info-string!", function(match, _, bufnr, pred, metadata)
+        local node = first_node(match[pred[2]])
+        if not node then
+          return
+        end
+        local alias = vim.treesitter.get_node_text(node, bufnr):lower()
+        metadata["injection.language"] = resolve_markdown_lang(alias)
+      end, { force = true })
+
+      tsquery.add_directive("set-lang-from-mimetype!", function(match, _, bufnr, pred, metadata)
+        local node = first_node(match[pred[2]])
+        if not node then
+          return
+        end
+        local type_attr_value = vim.treesitter.get_node_text(node, bufnr)
+        local html_script_type_languages = {
+          ["importmap"] = "json",
+          ["module"] = "javascript",
+          ["application/ecmascript"] = "javascript",
+          ["text/ecmascript"] = "javascript",
+        }
+        local configured = html_script_type_languages[type_attr_value]
+        if configured then
+          metadata["injection.language"] = configured
+        else
+          local parts = vim.split(type_attr_value, "/", {})
+          metadata["injection.language"] = parts[#parts]
+        end
+      end, { force = true })
+
+      tsquery.add_directive("downcase!", function(match, _, bufnr, pred, metadata)
+        local id = pred[2]
+        local node = first_node(match[id])
+        if not node then
+          return
+        end
+        local text = vim.treesitter.get_node_text(node, bufnr, { metadata = metadata[id] }) or ""
+        if not metadata[id] then
+          metadata[id] = {}
+        end
+        metadata[id].text = string.lower(text)
+      end, { force = true })
+
       -- use the python highlighter for .mojo files, which are recognized as conf ones
       -- vim.treesitter.language.register('python', 'conf')
 
