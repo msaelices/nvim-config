@@ -771,6 +771,39 @@ return {
     event = "VeryLazy",
     opts = {},
   },
+  {
+    "nvchad/ui",
+    config = function()
+      -- Some LSPs (e.g. Mojo) send userdata for data.message in LspProgress,
+      -- which crashes the upstream `string.match(data.message, ...)` call.
+      local stl_utils = require "nvchad.stl.utils"
+      local spinners = { "", "󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥", "" }
+      stl_utils.autocmds = function()
+        vim.api.nvim_create_autocmd("LspProgress", {
+          pattern = { "begin", "report", "end" },
+          callback = function(args)
+            if not args.data or not args.data.params then
+              return
+            end
+            local data = args.data.params.value
+            local progress = ""
+            if data.percentage then
+              local idx = math.max(1, math.floor(data.percentage / 10))
+              progress = spinners[idx] .. " " .. data.percentage .. "%% "
+            end
+            local loaded_count = ""
+            if type(data.message) == "string" then
+              loaded_count = string.match(data.message, "^(%d+/%d+)") or ""
+            end
+            local str = progress .. (data.title or "") .. " " .. loaded_count
+            stl_utils.state.lsp_msg = data.kind == "end" and "" or str
+            vim.cmd.redrawstatus()
+          end,
+        })
+      end
+      require "nvchad"
+    end,
+  },
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {
