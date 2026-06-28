@@ -14,7 +14,9 @@ vim.lsp.config("*", {
 })
 
 -- lsps with default config
-local servers = { "html", "cssls", "mojo" }
+-- Note: the Mojo LSP is configured by the mojo.nvim plugin (see lua/plugins/init.lua),
+-- not here.
+local servers = { "html", "cssls" }
 for _, lsp in ipairs(servers) do
   vim.lsp.enable(lsp)
 end
