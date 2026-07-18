@@ -13,6 +13,28 @@ return {
     end,
   },
   {
+    -- All-in-one Mojo support: LSP, formatting (via conform), treesitter,
+    -- completion, commands (:Mojo run/debug/restart/...) and environment
+    -- (Pixi/venv/SDK) auto-detection. Replaces the previous custom mojo LSP +
+    -- manual tree-sitter parser registration.
+    "Sarctiann/mojo.nvim",
+    main = "mojo",
+    lazy = false,
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "stevearc/conform.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    opts = {
+      -- DAP is handled by our existing nvim-dap + codelldb config below.
+      dap = { enabled = false },
+      -- We use NvChad's statusline, not lualine.
+      statusline = { enabled = false },
+      -- Keep NvChad's default K (hover) / <leader>ca (code action) mappings.
+      keymaps = { enabled = false },
+    },
+  },
+  {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",
@@ -447,47 +469,6 @@ return {
       vim.keymap.set("n", "<Leader>do", ":DapStepOver<CR>")
       vim.keymap.set("n", "<Leader>di", ":DapStepInto<CR>")
 
-      -- dap.adapters.mojo = function(cb, config)
-      --   if config.request == 'attach' then
-      --     local port = 12355
-      --     local host = '127.0.0.1'
-      --     cb({
-      --       type = 'server',
-      --       port = port,
-      --       host = host,
-      --       options = {
-      --         source_filetype = 'mojo',
-      --       },
-      --     })
-      --   else
-      --   end
-      -- end
-
-      -- dap.adapters.mojo = {
-      --   -- type = 'executable',
-      --   -- command = 'mojo',
-      --   --
-      --   type = "server",
-      --   host = '127.0.0.1',
-      --   port = 12355,
-      -- }
-      --
-      -- dap.configurations.mojo = {
-      --   {
-      --
-      --       type = 'mojo',
-      --       request = 'launch',
-      --       name = 'Launch',
-      --       program = function()
-      --         return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-      --       end,
-      --       cwd = '${workspaceFolder}',
-      --       stopOnEntry = false,
-      --       args = {},
-      --       runInTerminal = true,
-      --   },
-      -- }
-
       dap.adapters.codelldb = {
         type = "server",
         port = "${port}",
@@ -669,21 +650,8 @@ return {
         metadata[id].text = string.lower(text)
       end, { force = true })
 
-      -- use the python highlighter for .mojo files, which are recognized as conf ones
-      -- vim.treesitter.language.register('python', 'conf')
-
-      local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-      parser_config.mojo = {
-        install_info = {
-          url = "https://github.com/lsh/tree-sitter-mojo", -- local path or git repo
-          files = { "src/parser.c" }, -- note that some parsers also require src/scanner.c or src/scanner.cc
-          -- optional entries:
-          branch = "main", -- default branch in case of git repo if different from master
-          generate_requires_npm = false, -- if stand-alone parser without npm dependencies
-          requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
-        },
-        filetype = "mojo", -- if filetype does not match the parser name
-      }
+      -- The Mojo tree-sitter parser is registered by the mojo.nvim plugin
+      -- (self-hosted grammar), so we no longer register lsh/tree-sitter-mojo here.
 
       -- Set the comment string for Mojo files
       vim.api.nvim_create_autocmd("FileType", {
